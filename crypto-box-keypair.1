@@ -1,0 +1,31 @@
+.TH crypto-box-keypair 1 "October 2010" "nacltools" "NaCl: Networking and Cryptography library"
+.SH NAME
+.PP
+\fBcrypto-box-keypair\fP \- randomly generate a pair of corresponding public and secret keys
+.SH SYNOPSIS
+.PP
+.B crypto-box-keypair \fIpublickeyfile\fP \fIsecretkeyfile\fP 
+.SH DESCRIPTION
+.PP
+Randomly generates a pair of public key secret keys to be used by crypto-box(1) and crypto-box-open(1).  
+.PP
+The public key will be written to the file \fIpublickeyfile\fP 
+.PP
+The secret key will be written to the file \fIsecretkeyfile\fP
+.SH EXIT CODE
+.PP
+Normally, \fBcrypto-box-keypair\fP exits with \fB0\fP. 
+.PP
+If invalid arguments are given, \fBcrypto-box-keypair\fP exits with \fB100\fP.
+.PP
+If either \fIpublickeyfile\fP or \fIsecretkeyfile\fP already exists, or if either refers to an invalid filesystem path, then \fBcrypto-box-keypair\fP exits with \fB111\fP, and neither key is written.
+.SH CRYPTOGRAPHY
+.PP
+This program is a simply a wrapper around the crypto_box_keypair function provided by \fBNaCl\fP, the Networking and Cryptography library by Daniel J. Bernstein and Tanja Lange. See the official website \fIhttp://nacl.cr.yp.to/\fP for details.
+.PP
+.SH AUTHOR
+.PP
+Jay Sullivan <jay@petio.org>
+.PP
+.SH "SEE ALSO"
+crypto-box(1) crypto-box-open(1)

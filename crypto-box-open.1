@@ -1,0 +1,30 @@
+.TH crypto-box-open 1 "October 2010" "nacltools" "NaCl: Networking and Cryptography library"
+.SH NAME
+.PP
+\fBcrypto-box-open\fP \- verify and decrypt a stream of data using asymmetric (public-key) cryptography
+.SH SYNOPSIS
+.PP
+.B crypto-box-open [ \fIpublickeyfile\fP \fIsecretkeyfile\fP ]
+.SH DESCRIPTION
+.PP
+Reads a stream of encrypted data from standard input, and decrypts it using public-key authenticated cryptography from \fINaCl\fP (the Networking and Cryptography library). Specifically, the encrypted data from standard input is expected to be of the format output by crypto-box(1).
+.PP
+The \fIpublickeyfile\fP should point to a file with the public key of the message sender.
+.PP
+The \fIsecretkeyfile\fP should point to a file with the secret key of the message recipient.
+.PP
+If neither \fIpublickeyfile\fP or \fIsecretkeyfile\fP are given, the environment variables \fINACL_PUBLICKEY_FILE\fP and \fINACL_SECRETKEY_FILE\fP are used instead.
+.SH EXIT CODE
+.PP
+Normally, \fBcrypto-box-open\fP exits with \fB0\fP. 
+.PP
+If invalid arguments are given, \fBcrypto-box-open\fP exits with \fB100\fP.
+.PP
+If an error occurs, \fBcrypto-box-open\fP exits with \fB111\fP.
+.SH CRYPTOGRAPHY
+.PP
+This program is a simply a wrapper around the crypto_box_open function provided by \fBNaCl\fP, the Networking and Cryptography library by Daniel J. Bernstein and Tanja Lange. See the official website \fIhttp://nacl.cr.yp.to/\fP for details.
+.SH AUTHOR
+Jay Sullivan <jay@petio.org>
+.SH "SEE ALSO"
+crypto-box-keypair(1) crypto-box(1)

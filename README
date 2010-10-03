@@ -1,0 +1,61 @@
+nacltools-20101002
+Jay Sullivan
+Public Domain
+
+This project, nacltools, provides commandline tools for the cryptographic operations provided by NaCl: Networking and Cryptography library ( see http://nacl.cr.yp.to/ ).
+
+------------------
+-- Installation --
+------------------
+
+First, download and build NaCl :
+
+	cd
+	wget http://hyperelliptic.org/nacl/nacl-20100830.tar.bz2
+	bunzip2 < nacl-20100830.tar.bz2 | tar -xf -
+	cd nacl-20100830
+	./do
+
+Then, install the NaCl headers to /usr/include/nacl and NaCl libraries to /usr/lib/nacl :
+
+	cd build/`hostname -s`
+	sudo mkdir /usr/include/nacl && sudo cp include/`bin/okabi`/* /usr/include/nacl
+	sudo mkdir /usr/lib/nacl && sudo cp lib/`bin/okabi`/* /usr/lib/nacl
+    
+Finally, download and install nacltools ( installs to /usr/local/bin/ and man pages to /usr/share/man/man1/ ) :
+
+	cd
+	git clone git://github.com/notfed/nacltools.git
+	cd nacltools
+	make
+	sudo make install
+
+------------------
+-- Commands     --
+------------------
+
+-- Asymmetric Cryptography --
+
+	- crypto-box-keypair
+		Creates a public key and a secret key.  
+	- crypto-box
+		Encrypts and authenticates a stream of data using asymmetric cryptography
+	- crypto-box-open
+		Verifies and decrypts a stream of data using asymmetric cryptography
+
+-- Symmetric Cryptography --
+
+	- crypto-secretbox-key
+		Creates a secret key.
+	- crypto-secretbox
+		Encrypts and authenticates a stream of data using symmetric cryptography
+	- crypto-secretbox-open
+		Verifies and decrypts a stream of data using symmetric cryptography
+
+-- Key Encoding --
+
+	- nacl-key-encode
+		Takes a 32-byte key as input, and encodes it into a 51-byte string in base-32 format
+	- nacl-key-decode
+		Takes a 51-byte string in base-32 format, and encodes it into a 32-byte key
+
