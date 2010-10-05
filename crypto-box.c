@@ -33,8 +33,8 @@ int main(int argc, char * argv[])
     const char* sk0;
 
     /* Check args */
-    pk0 = ((argc<=1) ? env_get("NACL_PUBLICKEY_FILE") : argv[1]);
-    sk0 = ((argc<=2) ? env_get("NACL_SECRETKEY_FILE") : argv[2]);
+    pk0 = ((argc<2) ? env_get("NACL_PUBLICKEY_FILE") : argv[1]);
+    sk0 = ((argc<3) ? env_get("NACL_SECRETKEY_FILE") : argv[2]);
 
     if(pk0==0 || sk0==0) 
         strerr_die1x(100,"crypto-box: usage: crypto-box [ publickeyfile ] [ secretkeyfile ]");
