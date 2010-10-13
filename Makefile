@@ -10,16 +10,24 @@ compile :
 	chmod +x compile
 crypto-box : load crypto-box.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
 	./load crypto-box alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
-crypto-secretbox : load crypto-secretbox.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
-	./load crypto-secretbox alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
 crypto-box-open : load crypto-box-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o devurandom.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
 	./load crypto-box-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o devurandom.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
+crypto-secretbox : load crypto-secretbox.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
+	./load crypto-secretbox alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
 crypto-secretbox-open : load crypto-secretbox-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_secretbox_open.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readclose.o scan_ulong.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o
 	./load crypto-secretbox-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_secretbox_open.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readclose.o scan_ulong.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl
+nacl-key-encode : load nacl-key-encode.o base32_encode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
+	./load nacl-key-encode base32_encode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
+nacl-key-decode : load nacl-key-decode.o base32_decode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
+	./load nacl-key-decode base32_decode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
 alloc.o : compile alloc.c
 	./compile alloc.c
 alloc_re.o : compile alloc_re.c
 	./compile alloc_re.c
+base32_decode.o : compile base32_decode.c
+	./compile base32_decode.c
+base32_encode.o : compile base32_encode.c
+	./compile base32_encode.c
 buffer_0.o : compile buffer_0.c
 	./compile buffer_0.c
 buffer_1.o : compile buffer_1.c
@@ -66,6 +74,10 @@ fmt_uint.o : compile fmt_uint.c
 	./compile fmt_uint.c
 fmt_ulong.o : compile fmt_ulong.c
 	./compile fmt_ulong.c
+nacl-key-decode.o : compile nacl-key-decode.c
+	./compile nacl-key-decode.c
+nacl-key-encode.o : compile nacl-key-encode.c
+	./compile nacl-key-encode.c
 netstring_read.o : compile netstring_read.c
 	./compile netstring_read.c
 netstring_write.o : compile netstring_write.c
@@ -98,6 +110,6 @@ strerr_sys.o : compile strerr_sys.c
 	./compile strerr_sys.c
 surf.o : compile surf.c
 	./compile surf.c
-it : crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open
+it : crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open nacl-key-decode nacl-key-encode
 clean : 
-	rm -f *.o crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open
+	rm -f *.o crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open nacl-key-decode nacl-key-encode

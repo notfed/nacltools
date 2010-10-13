@@ -1,3 +1,6 @@
+/*
+%use error;
+*/
 /* Public Domain */
 #include <stdint.h>
 #include <errno.h>

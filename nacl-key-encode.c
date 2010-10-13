@@ -1,3 +1,8 @@
+/*
+%use strerr_die;
+%use strerr_sys;
+%use base32_encode;
+*/
 /* Public Domain */
 #include "readwrite.h"
 #include "base32.h"
