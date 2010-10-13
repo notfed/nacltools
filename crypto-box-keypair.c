@@ -1,5 +1,9 @@
+/*
+%use strerr_die;
+%use open_excl;
+*/
 /* Public Domain */
-#include <crypto_box.h>
+#include <nacl/crypto_box.h>
 #include "buffer.h"
 #include "open.h"
 #include "readwrite.h"

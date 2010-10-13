@@ -2,6 +2,7 @@
 %use buffer_put;
 %use str_len;
 %use buffer_2;
+%use strerr_sys;
 */
 #include "buffer.h"
 #include "exit.h"

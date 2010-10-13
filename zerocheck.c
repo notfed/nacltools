@@ -1,3 +1,7 @@
+/*
+%use error;
+%use strerr_die;
+*/
 /* Public Domain */
 #include "readwrite.h"
 #include "error.h"
