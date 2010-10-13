@@ -1,5 +1,8 @@
+/*
+%use stralloc_copyb;
+*/
 /* Public Domain */
-#include <crypto_secretbox.h>
+#include <nacl/crypto_secretbox.h>
 #include "stralloc.h"
 #include "crypto_str.h"
 

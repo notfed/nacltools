@@ -1,5 +1,15 @@
+/*
+%use buffer_0;
+%use buffer_1;
+%use strerr_die;
+%use strerr_sys;
+%use openreadclose;
+%use netstring_read;
+%use buffer_put;
+%use crypto_str_secretbox_open;
+*/
 /* Public Domain */
-#include <crypto_secretbox.h>
+#include <nacl/crypto_secretbox.h>
 #include "crypto_str.h"
 #include "stralloc.h"
 #include "buffer.h"

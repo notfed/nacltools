@@ -1,3 +1,7 @@
+/*
+%use error;
+%use error_str;
+*/
 #include "error.h"
 #include "strerr.h"
 

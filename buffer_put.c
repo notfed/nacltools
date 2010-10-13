@@ -1,6 +1,7 @@
 /*
 %use error;
 %use byte_copy;
+%use str_len;
 */
 #include "buffer.h"
 #include "str.h"

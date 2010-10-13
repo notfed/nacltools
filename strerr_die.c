@@ -1,3 +1,8 @@
+/*
+%use buffer_put;
+%use str_len;
+%use buffer_2;
+*/
 #include "buffer.h"
 #include "exit.h"
 #include "strerr.h"
