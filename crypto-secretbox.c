@@ -1,5 +1,24 @@
+/*
+%use buffer_put;
+%use buffer_0;
+%use buffer_1;
+%use buffer_2;
+%use openreadclose;
+%use env;
+%use strerr_die;
+%use strerr_sys;
+%use stralloc_ready;
+%use surf;
+%use crypto_str_box_beforenm;
+%use crypto_str_box_afternm;
+%use crypto_str_secretbox;
+%use netstring_write;
+%use readchunk;
+%use stralloc_copys;
+%use error_str;
+*/
 /* Public Domain */
-#include <crypto_secretbox.h>
+#include <nacl/crypto_secretbox.h>
 #include "surf.h"
 #include "crypto_str.h"
 #include "stralloc.h"

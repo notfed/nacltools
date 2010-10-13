@@ -1,3 +1,8 @@
+/*
+%use stralloc_copys;
+%use stralloc_ready;
+%use error;
+*/
 #include <unistd.h>
 #include "error.h"
 #include "readclose.h"
