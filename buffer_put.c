@@ -1,3 +1,7 @@
+/*
+%use error;
+%use byte_copy;
+*/
 #include "buffer.h"
 #include "str.h"
 #include "byte.h"

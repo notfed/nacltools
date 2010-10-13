@@ -1,3 +1,10 @@
+/*
+%use stralloc_copys;
+%use buffer_get;
+%use error;
+%use error_str;
+*/
+
 /* Public Domain */
 #include "error.h"
 #include "readchunk.h"

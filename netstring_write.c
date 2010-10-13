@@ -1,3 +1,6 @@
+/*
+%use fmt_uint;
+*/
 /* Public Domain */
 #include "netstring.h"
 #include "buffer.h"

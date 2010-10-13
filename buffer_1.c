@@ -1,3 +1,6 @@
+/*
+%use buffer_write;
+*/
 #include "buffer.h"
 
 char buffer_1_space[BUFFER_OUTSIZE];

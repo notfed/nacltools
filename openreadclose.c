@@ -1,3 +1,7 @@
+/*
+%use open_read;
+%use readclose;
+*/
 #include "error.h"
 #include "open.h"
 #include "readclose.h"

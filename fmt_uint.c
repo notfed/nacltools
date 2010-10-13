@@ -1,3 +1,6 @@
+/*
+%use fmt_ulong;
+*/
 #include "fmt.h"
 
 unsigned int fmt_uint(s,u) register char *s; register unsigned int u;

@@ -1,5 +1,5 @@
 /* Public Domain */
-#include <crypto_box.h>
+#include <nacl/crypto_box.h>
 #include "stralloc.h"
 #include "crypto_str.h"
 

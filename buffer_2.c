@@ -1,3 +1,6 @@
+/*
+%use buffer_write;
+*/
 #include "buffer.h"
 
 char buffer_2_space[256];

@@ -1,3 +1,7 @@
+/*
+%use alloc;
+%use alloc_re;
+*/
 #include "alloc.h"
 #include "stralloc.h"
 #include "gen_allocdefs.h"

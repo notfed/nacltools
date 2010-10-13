@@ -1,3 +1,7 @@
+/*
+%use str_len;
+%use str_start;
+*/
 #include "str.h"
 #include "env.h"
 
