@@ -16,11 +16,11 @@ First, download and build NaCl :
 	cd nacl-20100830
 	./do
 
-Then, install the NaCl headers to /usr/include/nacl and NaCl libraries to /usr/lib/nacl :
+Then, install the NaCl headers to /usr/include/nacl and NaCl libraries to /usr/lib :
 
 	cd build/`hostname -s`
 	sudo mkdir /usr/include/nacl && sudo cp include/`bin/okabi`/* /usr/include/nacl
-	sudo mkdir /usr/lib/nacl && sudo cp lib/`bin/okabi`/* /usr/lib/nacl
+	sudo mkdir /usr/lib/nacl && sudo cp lib/`bin/okabi`/* /usr/lib
     
 Finally, download and install nacltools ( installs to /usr/local/bin/ and man pages to /usr/share/man/man1/ ) :
 
