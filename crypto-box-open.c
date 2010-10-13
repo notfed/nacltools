@@ -50,7 +50,7 @@ int main(int argc, char * argv[])
     if(argc!=3) {
         if( (argv[1] = env_get("NACL_PUBLICKEY_FILE"))==0 
         ||  (argv[2] = env_get("NACL_SECRETKEY_FILE"))==0 )
-        strerr_die1x(111,"usage: crypto-box [ publickeyfile secretkeyfile ]");
+        strerr_die1x(111,"usage: crypto-box-open [ publickeyfile secretkeyfile ]");
     }
 
     /* Read public key */
