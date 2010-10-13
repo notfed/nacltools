@@ -1,9 +1,6 @@
-/*
-%use devurandom;
-*/
 /* Public Domain */
 #include <stdint.h>
-#include "devurandom.h"
+#include <nacl/randombytes.h>
 #include "surf.h"
 #include "byte.h"
 
