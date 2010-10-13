@@ -32,7 +32,7 @@ int main(int argc, char * argv[])
 
     /* Check args */
     if(argc!=2) 
-        strerr_die1x(100,"usage: crypto-secretbox-open secretkeyfile");
+        strerr_die1x(100,"crypto-secretbox-open: usage: crypto-secretbox-open secretkeyfile");
 
     /* Read secret key */
     if(openreadclose(argv[1],&key,crypto_secretbox_KEYBYTES)<=0)
