@@ -1,2 +1,0 @@
-#!/bin/sh
-gcc -g -Wall -pedantic -Wno-long-long -c ${1+"$@"}

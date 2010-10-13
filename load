@@ -1,3 +1,0 @@
-#!/bin/sh
-main="$1"; shift
-exec gcc -s -o "$main" "$main".o ${1+"$@"} -lnacl
