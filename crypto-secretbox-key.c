@@ -1,6 +1,11 @@
+/*
+%use strerr_die;
+%use strerr_sys;
+%use open_excl;
+*/
 /* Public Domain */
-#include <crypto_secretbox.h>
-#include <randombytes.h>
+#include <nacl/crypto_secretbox.h>
+#include <nacl/randombytes.h>
 #include "open.h"
 #include "readwrite.h"
 #include "error.h"
