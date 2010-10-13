@@ -1,3 +1,8 @@
+/*
+%use stralloc_ready;
+%use stralloc_copyb;
+%use byte_copy;
+*/
 #include "stralloc.h"
 #include "byte.h"
 

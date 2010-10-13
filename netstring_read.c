@@ -1,3 +1,11 @@
+/*
+%use buffer_get;
+%use stralloc_copys;
+%use stralloc_ready;
+%use strerr_die;
+%use scan_ulong;
+%
+*/
 /* Public Domain */
 #include <stdio.h>
 #include "netstring.h"

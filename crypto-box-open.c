@@ -1,5 +1,21 @@
+/*
+%use buffer_put;
+%use buffer_0;
+%use buffer_1;
+%use buffer_2;
+%use openreadclose;
+%use env;
+%use strerr_die;
+%use strerr_sys;
+%use stralloc_ready;
+%use surf;
+%use crypto_str_box_beforenm;
+%use crypto_str_box_open_afternm;
+%use netstring_read;
+%use readchunk;
+*/
 /* Public Domain */
-#include <crypto_box.h>
+#include <nacl/crypto_box.h>
 #include "crypto_str.h"
 #include "stralloc.h"
 #include "buffer.h"
@@ -18,13 +34,14 @@ static stralloc m = {0};
 static stralloc c = {0};
 static stralloc n = {0};
 #define FATAL "crypto-box-open: error: "
-
+/*
 void show(const char *desc, stralloc *s)
 { 
   buffer_puts(buffer_2,desc);
   buffer_puthex(buffer_2,s->s,s->len); 
   buffer_putsflush(buffer_2,"\n"); 
 }
+*/
 int main(int argc, char * argv[])
 {
     int r;

@@ -8,10 +8,12 @@ compile :
 	echo '#!/bin/sh' > compile
 	echo 'exec cc -c $${1+"$$@"}' >> compile
 	chmod +x compile
-crypto-box : load crypto-box.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
+crypto-box : load crypto-box.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o 
 	./load crypto-box alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
 crypto-secretbox : load crypto-secretbox.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
 	./load crypto-secretbox alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o devurandom.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
+crypto-box-open : load crypto-box-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o devurandom.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o 
+	./load crypto-box-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o devurandom.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl
 alloc.o : compile alloc.c
 	./compile alloc.c
 alloc_re.o : compile alloc_re.c
@@ -34,12 +36,16 @@ byte_copyr.o : compile byte_copyr.c
 	./compile byte_copyr.c
 crypto-box.o : compile crypto-box.c
 	./compile crypto-box.c
+crypto-box-open.o : compile crypto-box-open.c
+	./compile crypto-box-open.c
 crypto-secretbox.o : compile crypto-secretbox.c
 	./compile crypto-secretbox.c
 crypto_str_box_afternm.o : compile crypto_str_box_afternm.c
 	./compile crypto_str_box_afternm.c
 crypto_str_box_beforenm.o : compile crypto_str_box_beforenm.c
 	./compile crypto_str_box_beforenm.c
+crypto_str_box_open_afternm.o : compile crypto_str_box_open_afternm.c
+	./compile crypto_str_box_open_afternm.c
 crypto_str_secretbox.o : compile crypto_str_secretbox.c
 	./compile crypto_str_secretbox.c
 devurandom.o : compile devurandom.c
@@ -54,6 +60,8 @@ fmt_uint.o : compile fmt_uint.c
 	./compile fmt_uint.c
 fmt_ulong.o : compile fmt_ulong.c
 	./compile fmt_ulong.c
+netstring_read.o : compile netstring_read.c
+	./compile netstring_read.c
 netstring_write.o : compile netstring_write.c
 	./compile netstring_write.c
 open_read.o : compile open_read.c
@@ -64,10 +72,14 @@ readchunk.o : compile readchunk.c
 	./compile readchunk.c
 readclose.o : compile readclose.c
 	./compile readclose.c
+scan_ulong.o : compile scan_ulong.c
+	./compile scan_ulong.c
 str_len.o : compile str_len.c
 	./compile str_len.c
 str_start.o : compile str_start.c
 	./compile str_start.c
+stralloc_catb.o : compile stralloc_catb.c
+	./compile stralloc_catb.c
 stralloc_copyb.o : compile stralloc_copyb.c
 	./compile stralloc_copyb.c
 stralloc_copys.o : compile stralloc_copys.c
@@ -80,6 +92,6 @@ strerr_sys.o : compile strerr_sys.c
 	./compile strerr_sys.c
 surf.o : compile surf.c
 	./compile surf.c
-it : crypto-box crypto-secretbox
+it : crypto-box crypto-box-open crypto-secretbox
 clean : 
-	rm -f *.o crypto-box crypto-secretbox
+	rm -f *.o crypto-box crypto-box-open crypto-secretbox

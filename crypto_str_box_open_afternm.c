@@ -1,4 +1,8 @@
-#include <crypto_box.h>
+/*
+%use strerr_die;
+%use stralloc_catb;
+*/
+#include <nacl/crypto_box.h>
 #include "stralloc.h"
 #include "strerr.h"
 #include "crypto_str.h"
