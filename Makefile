@@ -8,6 +8,9 @@ compile :
 	echo '#!/bin/sh' > compile
 	echo 'exec cc -c $${1+"$$@"}' >> compile
 	chmod +x compile
+install : it
+	./install /usr/local/bin/ crypto-box-keypair crypto-secretbox-key crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open crypto-hash nacl-key-decode nacl-key-encode 
+	./install /usr/share/man/man1/ crypto-box-keypair.1 crypto-secretbox-key.1 crypto-box.1 crypto-box-open.1 crypto-secretbox.1 crypto-secretbox-open.1 
 test : test-box test-secretbox
 test-box : crypto-box crypto-box-open pk1 pk2
 	echo 'testmessage' | ./crypto-box pk1 sk2 | ./crypto-box-open pk2 sk1
