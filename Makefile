@@ -8,6 +8,24 @@ compile :
 	echo '#!/bin/sh' > compile
 	echo 'exec cc -c $${1+"$$@"}' >> compile
 	chmod +x compile
+install : it
+	./install /usr/local/bin/ crypto-box-keypair crypto-secretbox-key crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open crypto-hash-sha256 crypto-hash-sha512 nacl-key-decode nacl-key-encode 
+	./install /usr/share/man/man1/ crypto-box-keypair.1 crypto-secretbox-key.1 crypto-box.1 crypto-box-open.1 crypto-secretbox.1 crypto-secretbox-open.1 crypto-hash-sha256.1 crypto-hash-sha512.1 
+test : test-box test-secretbox
+test-box : crypto-box crypto-box-open pk1 pk2
+	echo 'testmessage' | ./crypto-box pk1 sk2 | ./crypto-box-open pk2 sk1
+test-secretbox : crypto-secretbox crypto-secretbox-open k
+	echo 'testmessage' | ./crypto-secretbox k | ./crypto-secretbox-open k
+longtest-box : crypto-box crypto-box-open zeros zerocheck pk1 pk2
+	./zeros | ./crypto-box pk1 sk2 | ./crypto-box-open pk2 sk1 | ./zerocheck
+longtest-secretbox : crypto-secretbox crypto-secretbox-open zeros zerocheck k
+	./zeros | ./crypto-secretbox k | ./crypto-secretbox-open k | ./zerocheck
+k : crypto-secretbox-key
+	./crypto-secretbox-key k
+pk1 : crypto-box-keypair
+	./crypto-box-keypair pk1 sk1
+pk2 : crypto-box-keypair
+	./crypto-box-keypair pk2 sk2
 crypto-box : load crypto-box.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o
 	./load crypto-box alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o -lnacl
 crypto-box-keypair : load crypto-box-keypair.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o /usr/lib/randombytes.o
