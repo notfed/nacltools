@@ -1,0 +1,28 @@
+.TH crypto-hash-sha256 1 "October 2010" "nacltools" "NaCl: Networking and Cryptography library"
+.SH NAME
+.PP
+\fBcrypto-hash-sha256\fP \- produce a SHA256 hash of the input 
+.SH SYNOPSIS
+.PP
+.B crypto-hash-sha256 [-b]
+.SH DESCRIPTION
+.PP
+Reads a complete stream of data from standard input, computes its SHA256 checksum, and prints out the result in hexidecimal.
+.PP
+\fB-b\fP 	
+output in binary mode
+
+.SH EXIT CODE
+.PP
+Normally, \fBcrypto-hash-sha256\fP exits with \fB0\fP. 
+.PP
+If invalid arguments are given, \fBcrypto-hash-sha256\fP exits with \fB100\fP.
+.PP
+If an error occurs, \fBcrypto-hash-sha256\fP exits with \fB111\fP.
+.SH CRYPTOGRAPHY
+.PP
+This program is a simply a wrapper around the crypto_hash_sha256.h function provided by \fBNaCl\fP, the Networking and Cryptography library by Daniel J. Bernstein and Tanja Lange. See the official website \fIhttp://nacl.cr.yp.to/\fP for details.
+.SH AUTHOR
+Jay Sullivan <jay@petio.org>
+.SH "SEE ALSO"
+crypto-box-keypair(1) crypto-box(1)

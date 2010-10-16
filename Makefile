@@ -14,6 +14,8 @@ crypto-box-keypair : load crypto-box-keypair.o buffer_2.o buffer_put.o buffer_wr
 	./load crypto-box-keypair buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o /usr/lib/randombytes.o -lnacl
 crypto-box-open : load crypto-box-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o
 	./load crypto-box-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o -lnacl
+crypto-hash-sha256 : load crypto-hash-sha256.o alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash_sha256.o error.o error_str.o str_diff.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o
+	./load crypto-hash-sha256 alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash_sha256.o error.o error_str.o str_diff.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl
 crypto-hash-sha512 : load crypto-hash-sha512.o alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash_sha512.o error.o error_str.o str_diff.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o
 	./load crypto-hash-sha512 alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash_sha512.o error.o error_str.o str_diff.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl
 crypto-secretbox : load crypto-secretbox.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o
@@ -64,6 +66,8 @@ crypto-box-keypair.o : compile crypto-box-keypair.c
 	./compile crypto-box-keypair.c
 crypto-box-open.o : compile crypto-box-open.c
 	./compile crypto-box-open.c
+crypto-hash-sha256.o : compile crypto-hash-sha256.c
+	./compile crypto-hash-sha256.c
 crypto-hash-sha512.o : compile crypto-hash-sha512.c
 	./compile crypto-hash-sha512.c
 crypto-secretbox.o : compile crypto-secretbox.c
@@ -78,6 +82,8 @@ crypto_str_box_beforenm.o : compile crypto_str_box_beforenm.c
 	./compile crypto_str_box_beforenm.c
 crypto_str_box_open_afternm.o : compile crypto_str_box_open_afternm.c
 	./compile crypto_str_box_open_afternm.c
+crypto_str_hash_sha256.o : compile crypto_str_hash_sha256.c
+	./compile crypto_str_hash_sha256.c
 crypto_str_hash_sha512.o : compile crypto_str_hash_sha512.c
 	./compile crypto_str_hash_sha512.c
 crypto_str_secretbox.o : compile crypto_str_secretbox.c
@@ -138,6 +144,6 @@ zerocheck.o : compile zerocheck.c
 	./compile zerocheck.c
 zeros.o : compile zeros.c
 	./compile zeros.c
-it : crypto-box crypto-box-keypair crypto-box-open crypto-hash-sha512 crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
+it : crypto-box crypto-box-keypair crypto-box-open crypto-hash-sha256 crypto-hash-sha512 crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
 clean : 
-	rm -f *.o crypto-box crypto-box-keypair crypto-box-open crypto-hash-sha512 crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
+	rm -f *.o crypto-box crypto-box-keypair crypto-box-open crypto-hash-sha256 crypto-hash-sha512 crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
