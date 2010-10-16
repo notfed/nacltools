@@ -8,46 +8,28 @@ compile :
 	echo '#!/bin/sh' > compile
 	echo 'exec cc -c $${1+"$$@"}' >> compile
 	chmod +x compile
-install : it
-	./install /usr/local/bin/ crypto-box-keypair crypto-secretbox-key crypto-box crypto-box-open crypto-secretbox crypto-secretbox-open crypto-hash nacl-key-decode nacl-key-encode 
-	./install /usr/share/man/man1/ crypto-box-keypair.1 crypto-secretbox-key.1 crypto-box.1 crypto-box-open.1 crypto-secretbox.1 crypto-secretbox-open.1 
-test : test-box test-secretbox
-test-box : crypto-box crypto-box-open pk1 pk2
-	echo 'testmessage' | ./crypto-box pk1 sk2 | ./crypto-box-open pk2 sk1
-test-secretbox : crypto-secretbox crypto-secretbox-open k
-	echo 'testmessage' | ./crypto-secretbox k | ./crypto-secretbox-open k
-longtest-box : crypto-box crypto-box-open zeros zerocheck pk1 pk2
-	./zeros | ./crypto-box pk1 sk2 | ./crypto-box-open pk2 sk1 | ./zerocheck
-longtest-secretbox : crypto-secretbox crypto-secretbox-open zeros zerocheck k
-	./zeros | ./crypto-secretbox k | ./crypto-secretbox-open k | ./zerocheck
-k : crypto-secretbox-key
-	./crypto-secretbox-key k
-pk1 : crypto-box-keypair
-	./crypto-box-keypair pk1 sk1
-pk2 : crypto-box-keypair
-	./crypto-box-keypair pk2 sk2
-crypto-box-keypair : load crypto-box-keypair.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o
-	./load crypto-box-keypair buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o -lnacl /usr/lib/randombytes.o
-crypto-box : load crypto-box.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
-	./load crypto-box alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl /usr/lib/randombytes.o
-crypto-box-open : load crypto-box-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
-	./load crypto-box-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl /usr/lib/randombytes.o
-crypto-secretbox-key : load crypto-secretbox-key.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o
-	./load crypto-secretbox-key buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o -lnacl /usr/lib/randombytes.o
-crypto-secretbox : load crypto-secretbox.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o
-	./load crypto-secretbox alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o -lnacl /usr/lib/randombytes.o
+crypto-box : load crypto-box.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o
+	./load crypto-box alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o -lnacl
+crypto-box-keypair : load crypto-box-keypair.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o /usr/lib/randombytes.o
+	./load crypto-box-keypair buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o /usr/lib/randombytes.o -lnacl
+crypto-box-open : load crypto-box-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o
+	./load crypto-box-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_beforenm.o crypto_str_box_open_afternm.o env.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readchunk.o readclose.o scan_ulong.o str_len.o str_start.o stralloc_catb.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o -lnacl
+crypto-hash-sha512 : load crypto-hash-sha512.o alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash_sha512.o error.o error_str.o str_diff.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o
+	./load crypto-hash-sha512 alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash_sha512.o error.o error_str.o str_diff.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl
+crypto-secretbox : load crypto-secretbox.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o
+	./load crypto-secretbox alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_box_afternm.o crypto_str_box_beforenm.o crypto_str_secretbox.o env.o error.o error_str.o fmt_uint.o fmt_ulong.o netstring_write.o open_read.o openreadclose.o readchunk.o readclose.o str_len.o str_start.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o surf.o /usr/lib/randombytes.o -lnacl
+crypto-secretbox-key : load crypto-secretbox-key.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o /usr/lib/randombytes.o
+	./load crypto-secretbox-key buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o open_excl.o str_len.o strerr_die.o strerr_sys.o /usr/lib/randombytes.o
 crypto-secretbox-open : load crypto-secretbox-open.o alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_secretbox_open.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readclose.o scan_ulong.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o
-	./load crypto-secretbox-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_secretbox_open.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readclose.o scan_ulong.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl 
-crypto-hash : load crypto-hash.o alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash.o error.o error_str.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o
-	./load crypto-hash alloc.o alloc_re.o appendchunk.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_puthex.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_hash.o error.o error_str.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl 
-nacl-key-encode : load nacl-key-encode.o base32_encode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
-	./load nacl-key-encode base32_encode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o 
+	./load crypto-secretbox-open alloc.o alloc_re.o buffer_0.o buffer_1.o buffer_2.o buffer_get.o buffer_put.o buffer_write.o byte_copy.o byte_copyr.o crypto_str_secretbox_open.o error.o error_str.o netstring_read.o open_read.o openreadclose.o readclose.o scan_ulong.o str_len.o stralloc_copyb.o stralloc_copys.o stralloc_ready.o strerr_die.o strerr_sys.o -lnacl
 nacl-key-decode : load nacl-key-decode.o base32_decode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
-	./load nacl-key-decode base32_decode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o 
-zeros : load zeros.o
-	./load zeros
+	./load nacl-key-decode base32_decode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
+nacl-key-encode : load nacl-key-encode.o base32_encode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
+	./load nacl-key-encode base32_encode.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
 zerocheck : load zerocheck.o buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
 	./load zerocheck buffer_2.o buffer_put.o buffer_write.o byte_copy.o error.o error_str.o str_len.o strerr_die.o strerr_sys.o
+zeros : load zeros.o
+	./load zeros
 alloc.o : compile alloc.c
 	./compile alloc.c
 alloc_re.o : compile alloc_re.c
@@ -82,8 +64,8 @@ crypto-box-keypair.o : compile crypto-box-keypair.c
 	./compile crypto-box-keypair.c
 crypto-box-open.o : compile crypto-box-open.c
 	./compile crypto-box-open.c
-crypto-hash.o : compile crypto-hash.c
-	./compile crypto-hash.c
+crypto-hash-sha512.o : compile crypto-hash-sha512.c
+	./compile crypto-hash-sha512.c
 crypto-secretbox.o : compile crypto-secretbox.c
 	./compile crypto-secretbox.c
 crypto-secretbox-key.o : compile crypto-secretbox-key.c
@@ -96,8 +78,8 @@ crypto_str_box_beforenm.o : compile crypto_str_box_beforenm.c
 	./compile crypto_str_box_beforenm.c
 crypto_str_box_open_afternm.o : compile crypto_str_box_open_afternm.c
 	./compile crypto_str_box_open_afternm.c
-crypto_str_hash.o : compile crypto_str_hash.c
-	./compile crypto_str_hash.c
+crypto_str_hash_sha512.o : compile crypto_str_hash_sha512.c
+	./compile crypto_str_hash_sha512.c
 crypto_str_secretbox.o : compile crypto_str_secretbox.c
 	./compile crypto_str_secretbox.c
 crypto_str_secretbox_open.o : compile crypto_str_secretbox_open.c
@@ -132,6 +114,8 @@ readclose.o : compile readclose.c
 	./compile readclose.c
 scan_ulong.o : compile scan_ulong.c
 	./compile scan_ulong.c
+str_diff.o : compile str_diff.c
+	./compile str_diff.c
 str_len.o : compile str_len.c
 	./compile str_len.c
 str_start.o : compile str_start.c
@@ -154,6 +138,6 @@ zerocheck.o : compile zerocheck.c
 	./compile zerocheck.c
 zeros.o : compile zeros.c
 	./compile zeros.c
-it : crypto-box crypto-box-keypair crypto-box-open crypto-hash crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
+it : crypto-box crypto-box-keypair crypto-box-open crypto-hash-sha512 crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
 clean : 
-	rm -f *.o crypto-box crypto-box-keypair crypto-box-open crypto-hash crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
+	rm -f *.o crypto-box crypto-box-keypair crypto-box-open crypto-hash-sha512 crypto-secretbox crypto-secretbox-key crypto-secretbox-open nacl-key-decode nacl-key-encode zerocheck zeros
