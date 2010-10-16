@@ -1,4 +1,5 @@
 /*
+%use /usr/lib/randombytes.o;
 %use strerr_die;
 %use strerr_sys;
 %use open_excl;

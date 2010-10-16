@@ -1,3 +1,6 @@
+/*
+%use /usr/lib/randombytes.o;
+*/
 /* Public Domain */
 #include <stdint.h>
 #include <nacl/randombytes.h>

@@ -1,4 +1,6 @@
 /*
+%lib nacl;
+%use /usr/lib/randombytes.o;
 %use strerr_die;
 %use open_excl;
 */

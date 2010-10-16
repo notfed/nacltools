@@ -1,3 +1,6 @@
+/*
+%lib nacl;
+*/
 /* Public Domain */
 #include <nacl/crypto_box.h>
 #include "stralloc.h"

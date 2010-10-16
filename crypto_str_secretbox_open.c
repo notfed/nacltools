@@ -1,4 +1,5 @@
 /*
+%lib nacl;
 %use stralloc_copyb;
 */
 /* Public Domain */
