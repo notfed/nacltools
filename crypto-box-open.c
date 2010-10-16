@@ -45,13 +45,15 @@ void show(const char *desc, stralloc *s)
 int main(int argc, char * argv[])
 {
     int r;
+    const char* pk0;
+    const char* sk0;
 
     /* Check args */
-    if(argc!=3) {
-        if( (argv[1] = env_get("NACL_PUBLICKEY_FILE"))==0 
-        ||  (argv[2] = env_get("NACL_SECRETKEY_FILE"))==0 )
-        strerr_die1x(111,"usage: crypto-box-open [ publickeyfile secretkeyfile ]");
-    }
+    pk0 = ((argc<2) ? env_get("NACL_PUBLICKEY_FILE") : argv[1]);
+    sk0 = ((argc<3) ? env_get("NACL_SECRETKEY_FILE") : argv[2]);
+
+    if(pk0==0 || sk0==0) 
+        strerr_die1x(100,"crypto-box: usage: crypto-box [ publickeyfile ] [ secretkeyfile ]");
 
     /* Read public key */
     if(openreadclose(argv[1],&pk,crypto_box_PUBLICKEYBYTES)<=0)

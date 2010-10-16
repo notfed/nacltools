@@ -4,16 +4,14 @@
 \fBcrypto-box-open\fP \- verify and decrypt a stream of data using asymmetric (public-key) cryptography
 .SH SYNOPSIS
 .PP
-.B crypto-box-open [ \fIpublickeyfile\fP \fIsecretkeyfile\fP ]
+.B crypto-box-open [ \fIpublickeyfile\fP ] [ \fIsecretkeyfile\fP ]
 .SH DESCRIPTION
 .PP
 Reads a stream of encrypted data from standard input, and decrypts it using public-key authenticated cryptography from \fINaCl\fP (the Networking and Cryptography library). Specifically, the encrypted data from standard input is expected to be of the format output by crypto-box(1).
 .PP
-The \fIpublickeyfile\fP should point to a file with the public key of the message sender.
+The \fIpublickeyfile\fP argument should point to a file with the public key of the intended message recipient.  If this argument is not given, the environment variable \fBNACL_PUBLICKEY_FILE\fP will be used instead.
 .PP
-The \fIsecretkeyfile\fP should point to a file with the secret key of the message recipient.
-.PP
-If neither \fIpublickeyfile\fP or \fIsecretkeyfile\fP are given, the environment variables \fINACL_PUBLICKEY_FILE\fP and \fINACL_SECRETKEY_FILE\fP are used instead.
+The \fIsecretkeyfile\fP argument should point to a file with the secret key of the message sender. If this argument is not given, the environment variable \fBNACL_SECRETKEY_FILE\fP will be used instead.
 .SH EXIT CODE
 .PP
 Normally, \fBcrypto-box-open\fP exits with \fB0\fP. 
